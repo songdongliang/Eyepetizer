@@ -3,6 +3,8 @@ package com.sdl.eyepetizer.ui.fragment
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.scwang.smartrefresh.header.MaterialHeader
+import com.sdl.eyepetizer.R
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -37,15 +39,20 @@ class HomeFragment: BaseFragment() {
     }
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.fragment_home
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //内容跟随偏移
+        smart_refresh_layout.setEnableHeaderTranslationContent(true)
+        smart_refresh_layout.setOnRefreshListener{
+            isRefresh = true
+
+        }
     }
 
     override fun lazyLoad() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }

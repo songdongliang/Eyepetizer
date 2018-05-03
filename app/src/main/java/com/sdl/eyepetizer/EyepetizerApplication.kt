@@ -1,17 +1,24 @@
 package com.sdl.eyepetizer
 
 import android.app.Application
+import android.content.Context
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import kotlin.properties.Delegates
 
 class EyepetizerApplication: Application() {
 
+    companion object {
 
+        var context: Context by Delegates.notNull<Context>()
+            private set
+    }
 
     override fun onCreate() {
         super.onCreate()
+        context = applicationContext
         initLoggerConfig()
     }
 
