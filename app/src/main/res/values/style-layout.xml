@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.Black" parent="Text">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Text.SmallMore" parent="Text">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+
+    <style name="Text.Small" parent="Text">
+        <item name="android:textSize">@dimen/sp14</item>
+    </style>
+
+    <style name="Text.Normal" parent="Text">
+        <item name="android:textSize">@dimen/sp16</item>
+    </style>
+
+    <style name="Text.Large" parent="Text">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+
+    <style name="Text.LargeMore" parent="Text">
+        <item name="android:textSize">@dimen/sp20</item>
+    </style>
+
+    <style name="Text.Normal.Black" parent="Text.Normal">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Text.Large.Black" parent="Text.Large">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Text.LargeMore.Black" parent="Text.LargeMore">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+</resources>

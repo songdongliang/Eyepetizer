@@ -7,4 +7,7 @@
     <color name="color_gray">#9a9a9a</color>
     <!-- item 标题颜色 -->
     <color name="color_item_title">@android:color/black</color>
+    <!-- title 半透明背景颜色 -->
+    <color name="color_title_bg">#CCFFFFFF</color>
+    <color name="color_darker_gray">#aaa</color>
 </resources>

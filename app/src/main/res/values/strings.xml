@@ -45,4 +45,5 @@
     <string name="user_close_permission">您关闭了权限</string>
     <string name="permission_apply">为了能够正常使用，请开启这些权限吧</string>
     <string name="init_finish">初始化完毕</string>
+    <string name="funny">#搞笑</string>
 </resources>

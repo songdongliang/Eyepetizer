@@ -40,6 +40,14 @@ object NetClient {
         toSubscribe(observable,subscriber)
     }
 
+    fun requestHomeData(num: Int): Observable<HomeBean> {
+        return apiService.getFirstHomeData(num)
+    }
+
+    fun loadMoreData(url: String): Observable<HomeBean> {
+        return apiService.getMoreHomeData(url)
+    }
+
     private fun <T> toSubscribe(o: Observable<T>,s: Subscriber<Any>) {
         o.subscribeOn(Schedulers.io())
                 .debounce(1L,TimeUnit.SECONDS)

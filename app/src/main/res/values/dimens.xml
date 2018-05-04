@@ -8,4 +8,11 @@
     <dimen name="dp60">60dp</dimen>
     <dimen name="dp45">45dp</dimen>
     <dimen name="dp40">40dp</dimen>
+    <dimen name="dp230">230dp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="dp250">250dp</dimen>
+    <dimen name="dp310">310dp</dimen>
+    <dimen name="sp14">14sp</dimen>
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="line">0.5dp</dimen>
 </resources>

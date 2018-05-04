@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="avatar"
+            type="String"/>
+        <variable
+            name="cover"
+            type="String"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp310"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <ImageView
+            android:id="@+id/iv_cover_feed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp250"
+            android:scaleType="fitXY"
+            android:src="@mipmap/placeholder_banner"
+            app:imageUrl="@{cover}"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover_feed">
+            <ImageView
+                android:id="@+id/image_avatar"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginEnd="@dimen/dp16"
+                tools:src="@mipmap/ic_launcher_round"
+                app:imageUrl="@{avatar}"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp16"
+                android:layout_toEndOf="@id/image_avatar"
+                android:layout_toStartOf="@+id/tv_category">
+                <TextView
+                    style="@style/Text.Normal.Black"
+                    android:maxLines="1"
+                    tools:text="life不止眼前的过去，and诗和远方"/>
+                <TextView
+                    android:id="@+id/text_tag"
+                    style="@style/Text.SmallMore"
+                    tools:text="a/b/c/06`19`"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_category"
+                style="@style/Text"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp16"
+                tools:text="@string/funny"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_darker_gray"/>
+        </RelativeLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

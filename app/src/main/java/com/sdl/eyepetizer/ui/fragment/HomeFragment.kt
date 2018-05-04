@@ -4,11 +4,25 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.sdl.eyepetizer.R
+import com.sdl.eyepetizer.connertor.HomeLoad
+import com.sdl.eyepetizer.model.HomeBean
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
-class HomeFragment: BaseFragment() {
+class HomeFragment: BaseFragment(),HomeLoad {
+    override fun setHomeData(homeBean: HomeBean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showError(msg: String, errorCode: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private var mTitle: String? = null
 
@@ -53,6 +67,17 @@ class HomeFragment: BaseFragment() {
 
     override fun lazyLoad() {
 
+    }
+
+    fun showLoading() {
+        if (!isRefresh) {
+            isRefresh = false
+            mLayoutStatusView?.showLoading()
+        }
+    }
+
+    fun dismissLoading() {
+        smart_refresh_layout.finishRefresh()
     }
 
 }
