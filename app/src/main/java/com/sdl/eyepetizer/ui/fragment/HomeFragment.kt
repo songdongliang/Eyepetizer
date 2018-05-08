@@ -69,14 +69,14 @@ class HomeFragment: BaseFragment(),HomeLoad {
 
     }
 
-    fun showLoading() {
+    override fun showLoading() {
         if (!isRefresh) {
             isRefresh = false
             mLayoutStatusView?.showLoading()
         }
     }
 
-    fun dismissLoading() {
+    override fun dismissLoading() {
         smart_refresh_layout.finishRefresh()
     }
 

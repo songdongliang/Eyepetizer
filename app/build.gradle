@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'      // 添加 kapt 插件支持
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -23,6 +25,10 @@ android {
     dataBinding {
         enabled true
     }
+}
+
+kapt {  // kapt 配置
+    generateStubs = true
 }
 
 dependencies {
@@ -63,4 +69,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.0.0'
     //轮播插件
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+    // DataBinding 注解处理依赖
+    kapt 'com.android.databinding:compiler:3.1.2'
 }
