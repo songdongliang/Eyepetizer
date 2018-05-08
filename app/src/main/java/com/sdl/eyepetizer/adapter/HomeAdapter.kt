@@ -22,7 +22,7 @@ import com.sdl.eyepetizer.ui.activity.VideoDetailActivity
 
 class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() {
 
-    private var items: ArrayList<HomeBean.Issue.Item>? = null
+    var items: ArrayList<HomeBean.Issue.Item>? = null
 
     private var inflater: LayoutInflater? = null
 

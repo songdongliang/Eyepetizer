@@ -15,4 +15,5 @@
     <dimen name="sp14">14sp</dimen>
     <dimen name="sp12">12sp</dimen>
     <dimen name="line">0.5dp</dimen>
+    <dimen name="dp50">50dp</dimen>
 </resources>
