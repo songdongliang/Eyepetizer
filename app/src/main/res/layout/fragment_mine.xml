@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/color_title_bg">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/image_about"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp16"
+                android:src="@mipmap/ic_about"/>
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.sdl.eyepetizer.ui.view.CircleImageView
+        android:id="@+id/image_avatar"
+        android:layout_width="@dimen/dp80"
+        android:layout_height="@dimen/dp80"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@mipmap/img_avatar"
+        app:borderWidth="@dimen/dp2"
+        app:borderColor="@color/color_gray"
+        app:type="circle"/>
+
+    <TextView
+        android:id="@+id/text_nickname"
+        style="@style/Text.Black"
+        android:textSize="@dimen/sp20"
+        android:textStyle="bold"
+        android:text="@string/default_nickname"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_avatar"
+        android:layout_marginTop="@dimen/dp16"/>
+
+    <TextView
+        android:id="@+id/text_view_homepage"
+        style="@style/Text.SmallMore"
+        android:textColor="@color/color_gray"
+        android:text="@string/view_homepage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_nickname"
+        android:layout_marginTop="@dimen/dp5"/>
+
+    <LinearLayout
+        android:id="@+id/layout_collection_comment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        app:layout_constraintTop_toBottomOf="@id/text_view_homepage"
+        android:layout_marginTop="@dimen/dp16">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/text_collection"
+                style="@style/Text"
+                android:drawablePadding="@dimen/dp7"
+                android:gravity="center"
+                android:text="@string/collection"
+                android:drawableStart="@mipmap/ic_action_collection"/>
+        </LinearLayout>
+        <View
+            android:layout_width="@dimen/line"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="center_vertical"
+            android:background="@color/color_gray"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/text_comment"
+                style="@style/Text"
+                android:drawablePadding="@dimen/dp7"
+                android:gravity="center"
+                android:text="@string/comment"
+                android:drawableStart="@mipmap/ic_action_comment"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:background="@color/color_gray"
+        app:layout_constraintTop_toBottomOf="@id/layout_collection_comment"
+        android:layout_marginTop="@dimen/dp16"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/view_line">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/dp50"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/text_mine_message"
+                style="@style/Text.Normal"
+                android:layout_height="@dimen/dp50"
+                android:text="@string/mine_message"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/text_mine_attention"
+                style="@style/Text.Normal"
+                android:layout_height="@dimen/dp50"
+                android:text="@string/mine_attention"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/text_mine_cache"
+                style="@style/Text.Normal"
+                android:layout_height="@dimen/dp50"
+                android:text="@string/mine_cache"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/text_watch_history"
+                style="@style/Text.Normal"
+                android:layout_height="@dimen/dp50"
+                android:text="@string/view_history"
+                android:gravity="center" />
+            <TextView
+                android:id="@+id/text_feedback"
+                style="@style/Text.Normal"
+                android:layout_height="@dimen/dp50"
+                android:text="@string/feedback"
+                android:gravity="center" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>

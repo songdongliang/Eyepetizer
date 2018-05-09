@@ -5,7 +5,7 @@ import com.sdl.eyepetizer.exception.ExceptionHandle
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.net.NetClient
 
-class HomePersenter: BasePresenter<HomeLoad>() {
+class HomePresenter: BasePresenter<HomeLoad>() {
 
     private var homeBean: HomeBean? = null
 

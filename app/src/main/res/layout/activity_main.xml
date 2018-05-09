@@ -11,15 +11,33 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <View
+
+    <com.github.mmin18.widget.RealtimeBlurView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/line"
-        />
+        android:layout_height="@dimen/dp50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/color_title_bg"/>
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp50"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/color_translucent"
+        app:tl_divider_color="@android:color/black"
+        app:tl_iconHeight="@dimen/dp24"
+        app:tl_iconWidth="@dimen/dp24"
+        app:tl_indicator_color="@color/colorPrimary"
+        app:tl_indicator_height="0dp"
+        app:tl_textSelectColor="@android:color/black"
+        app:tl_textUnselectColor="@color/color_gray"
+        app:tl_textsize="@dimen/sp10"
+        app:tl_underline_color="#dddddd"
+        app:tl_underline_height="@dimen/dp1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        app:layout_constraintBottom_toTopOf="@id/tab_layout"/>
 
 </android.support.constraint.ConstraintLayout>

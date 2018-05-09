@@ -17,7 +17,7 @@ import com.sdl.eyepetizer.adapter.HomeAdapter
 import com.sdl.eyepetizer.connertor.HomeLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.HomeBean
-import com.sdl.eyepetizer.presenter.HomePersenter
+import com.sdl.eyepetizer.presenter.HomePresenter
 import com.sdl.eyepetizer.showToast
 import com.sdl.eyepetizer.ui.activity.SearchActivity
 import com.sdl.eyepetizer.util.StatusBarUtil
@@ -29,7 +29,7 @@ import kotlin.collections.ArrayList
 class HomeFragment: BaseFragment(),HomeLoad {
 
     private val mPresenter by lazy {
-        HomePersenter()
+        HomePresenter()
     }
 
     private var mTitle: String? = null

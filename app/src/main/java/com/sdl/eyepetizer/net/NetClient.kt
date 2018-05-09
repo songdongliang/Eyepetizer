@@ -1,13 +1,13 @@
 package com.sdl.eyepetizer.net
 
 import com.sdl.eyepetizer.model.HomeBean
+import com.sdl.eyepetizer.model.TabInfoBean
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
@@ -40,6 +40,10 @@ object NetClient {
 
     fun loadMoreData(url: String): Observable<HomeBean> {
         return apiService.getMoreHomeData(url)
+    }
+
+    fun getRankList():Observable<TabInfoBean> {
+        return apiService.getRankList()
     }
 
 //    private fun <T> toSubscribe(o: Observable<T>,s: Subscriber<Any>) {

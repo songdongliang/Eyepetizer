@@ -13,6 +13,10 @@ fun Context.showToast(content: String): Toast {
     return toast
 }
 
+fun Context.showToast(stringId: Int): Toast {
+    return showToast(getString(stringId))
+}
+
 fun durationFormat(duration: Long): String {
     val minute = duration / 60
     val second = duration % 60

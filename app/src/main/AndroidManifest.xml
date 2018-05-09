@@ -21,7 +21,10 @@
         </activity>
         <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.VideoDetailActivity" />
-        <activity android:name=".ui.activity.SearchActivity"></activity>
+        <activity android:name=".ui.activity.SearchActivity" />
+        <activity android:name=".ui.activity.ProfileHomePageActivity" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.WatchHistoryActivity"></activity>
     </application>
 
 </manifest>
