@@ -11,10 +11,15 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        />
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp50"/>
+        android:layout_height="@dimen/dp50"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
