@@ -1,17 +1,38 @@
 package com.sdl.eyepetizer.ui.fragment
 
-class CategoryFragment: BaseFragment() {
+import com.sdl.eyepetizer.R
+import com.sdl.eyepetizer.connertor.CategoryLoad
+import com.sdl.eyepetizer.model.CategoryBean
+import com.sdl.eyepetizer.presenter.CategoryPresenter
+
+class CategoryFragment: BaseFragment(),CategoryLoad {
+
+    override fun showCategory(categoryList: ArrayList<CategoryBean>) {
+
+    }
+
+    override fun showError(errorMsg: String, errorCode: Int) {
+
+    }
+
+    override fun showLoading() {
+
+    }
+
+    override fun dismissLoading() {
+
+    }
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.layout_recyclerview
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun lazyLoad() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }

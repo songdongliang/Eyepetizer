@@ -11,6 +11,9 @@
     <color name="color_title_bg">#CCFFFFFF</color>
     <color name="color_darker_gray">#aaa</color>
     <color name="color_light_black">#5000</color>
+    <color name="color_lighter_gray">#ddd</color>
+
+    <color name="color_division_line">@color/color_lighter_gray</color>
     <color name="color_translucent">#00000000</color>
     <color name="backgroundColor">#EEEEEE</color>
 </resources>

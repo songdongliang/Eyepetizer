@@ -24,7 +24,8 @@
         <activity android:name=".ui.activity.SearchActivity" />
         <activity android:name=".ui.activity.ProfileHomePageActivity" />
         <activity android:name=".ui.activity.AboutActivity" />
-        <activity android:name=".ui.activity.WatchHistoryActivity"></activity>
+        <activity android:name=".ui.activity.WatchHistoryActivity" />
+        <activity android:name=".ui.activity.CategoryDetailActivity"></activity>
     </application>
 
 </manifest>

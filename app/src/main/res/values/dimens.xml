@@ -24,4 +24,6 @@
     <dimen name="dp5">5dp</dimen>
     <dimen name="dp7">7dp</dimen>
     <dimen name="dp30">30dp</dimen>
+    <dimen name="dp300">300dp</dimen>
+    <dimen name="dp200">200dp</dimen>
 </resources>

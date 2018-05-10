@@ -1,14 +1,16 @@
 package com.sdl.eyepetizer.net
 
+import com.sdl.eyepetizer.model.CategoryBean
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.model.TabInfoBean
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import rx.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 object NetClient {
@@ -35,15 +37,31 @@ object NetClient {
     }
 
     fun requestHomeData(num: Int): Observable<HomeBean> {
-        return apiService.getFirstHomeData(num)
+        return threadTransform(apiService.getFirstHomeData(num))
     }
 
     fun loadMoreData(url: String): Observable<HomeBean> {
-        return apiService.getMoreHomeData(url)
+        return threadTransform(apiService.getMoreHomeData(url))
     }
 
     fun getRankList():Observable<TabInfoBean> {
-        return apiService.getRankList()
+        return threadTransform(apiService.getRankList())
+    }
+
+    fun getIssueData(url: String) : Observable<HomeBean.Issue> {
+        return threadTransform(apiService.getIssueData(url))
+    }
+
+    fun getFollowInfo() : Observable<HomeBean.Issue> {
+        return threadTransform(apiService.getFollowInfo())
+    }
+
+    fun getCategory() : Observable<ArrayList<CategoryBean>> {
+        return threadTransform(apiService.getCategory())
+    }
+
+    private fun <T> threadTransform(observable: Observable<T>) : Observable<T> {
+        return observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
 //    private fun <T> toSubscribe(o: Observable<T>,s: Subscriber<Any>) {
