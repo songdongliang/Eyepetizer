@@ -1,7 +1,10 @@
 package com.sdl.eyepetizer.ui.fragment
 
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import com.sdl.eyepetizer.R
+import com.sdl.eyepetizer.adapter.BaseFragmentAdapter
+import com.sdl.eyepetizer.ui.view.TabLayoutHelper
 import com.sdl.eyepetizer.util.StatusBarUtil
 import kotlinx.android.synthetic.main.fragment_hot.*
 
@@ -36,8 +39,12 @@ class DiscoveryFragment: BaseFragment() {
         tabList.add(getString(R.string.follow))
         tabList.add(getString(R.string.category))
 
+        fragments.add(FollowFragment.getInstance(getString(R.string.follow)))
+        fragments.add(CategoryFragment.getInstance(getString(R.string.category)))
 
-        TODO()
+        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,fragments,tabList)
+        mTabLayout.setupWithViewPager(mViewPager)
+        TabLayoutHelper.setUpIndicatorWidth(mTabLayout)
     }
 
     override fun lazyLoad() {

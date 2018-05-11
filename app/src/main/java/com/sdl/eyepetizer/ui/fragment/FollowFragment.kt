@@ -27,6 +27,14 @@ class FollowFragment: BaseFragment(),FollowLoad {
         FollowAdapter(activity!!,itemList)
     }
 
+    companion object {
+        fun getInstance(title: String): FollowFragment {
+            val fragment = FollowFragment()
+            fragment.mTitle = title
+            return fragment
+        }
+    }
+
     override fun getLayoutId(): Int {
         return R.layout.layout_recyclerview
     }
