@@ -2,10 +2,12 @@ package com.sdl.eyepetizer.ui.view
 
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
+import com.sdl.eyepetizer.R
 
 /**
  * 圆角的ImageView
@@ -40,7 +42,7 @@ class CircleImageView(context: Context,attrs: AttributeSet) : AppCompatImageView
 
         private val DEFAULT_TYPE = TYPE_NONE
         private val DEFAULT_BORDER_COLOR = Color.TRANSPARENT
-        private val DEFAULT_BORDRE_WIDTH = 0
+        private val DEFAULT_BORDER_WIDTH = 0
         private val DEFAULT_RECT_ROUND_RADIUS = 0
     }
 

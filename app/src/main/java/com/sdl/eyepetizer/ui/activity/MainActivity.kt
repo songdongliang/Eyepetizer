@@ -102,12 +102,16 @@ class MainActivity : BaseActivity() {
     }
 
     private fun hideFragments(transaction: FragmentTransaction?) {
-        transaction?.let {
-            it.hide(mHomeFragment)
-            it.hide(mDiscoveryFragment)
-            it.hide(mHotFragment)
-            it.hide(mMineFragment)
-        }
+//        transaction?.let {
+//            it.hide(mHomeFragment)
+//            it.hide(mDiscoveryFragment)
+//            it.hide(mHotFragment)
+//            it.hide(mMineFragment)
+//        }
+        mHomeFragment?.let { transaction?.hide(it) }
+        mDiscoveryFragment?.let { transaction?.hide(it) }
+        mHotFragment?.let { transaction?.hide(it) }
+        mMineFragment?.let { transaction?.hide(it) }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -133,15 +137,15 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }

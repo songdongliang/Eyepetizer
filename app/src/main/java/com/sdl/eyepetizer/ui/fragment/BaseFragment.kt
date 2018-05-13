@@ -23,7 +23,7 @@ abstract class BaseFragment: Fragment() {
     protected var mLayoutStatusView: MultipleStatusView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(getLayoutId(),container)
+        return inflater.inflate(getLayoutId(),container,false)
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {

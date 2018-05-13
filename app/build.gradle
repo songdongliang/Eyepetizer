@@ -68,7 +68,8 @@ dependencies {
     //阿里的json
     implementation 'com.alibaba:fastjson:1.2.29'
     //图片处理
-    implementation 'com.github.bumptech.glide:glide:4.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt  'com.github.bumptech.glide:compiler:4.7.1'
     //轮播插件
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
     // 底部菜单

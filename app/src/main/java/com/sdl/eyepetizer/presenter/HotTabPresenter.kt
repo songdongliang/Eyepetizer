@@ -8,11 +8,12 @@ class HotTabPresenter: BasePresenter<HotTabLoad>() {
 
     fun getTabInfo() {
         loadController?.showLoading()
-        val disposble = NetClient.getRankList()
+        val disposable = NetClient.getRankList()
                 .subscribe({ tabInfoBean ->
                     loadController?.setTabInfo(tabInfoBean)
                 },{ throwable ->
                     loadController?.showError(ExceptionHandle.handleException(throwable),ExceptionHandle.errorCode)
                 })
+        addSubscription(disposable)
     }
 }
