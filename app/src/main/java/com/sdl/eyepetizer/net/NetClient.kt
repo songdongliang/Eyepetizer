@@ -60,6 +60,10 @@ object NetClient {
         return threadTransform(apiService.getCategory())
     }
 
+    fun getRelatedData(id: Long): Observable<HomeBean.Issue> {
+        return threadTransform(apiService.getRelatedData(id))
+    }
+
     private fun <T> threadTransform(observable: Observable<T>) : Observable<T> {
         return observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }

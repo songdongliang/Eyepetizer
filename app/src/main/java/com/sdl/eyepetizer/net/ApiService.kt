@@ -39,4 +39,10 @@ interface ApiService {
      */
     @GET("v4/categories")
     fun getCategory() : Observable<ArrayList<CategoryBean>>
+
+    /**
+     * 根据item id获取相关视频
+     */
+    @GET("v4/video/related?")
+    fun getRelatedData(@Query("id") id: Long): Observable<HomeBean.Issue>
 }
