@@ -43,5 +43,15 @@ class NetUtil {
             }
             return ret
         }
+
+        /**
+         * 判断是否是wifi
+         */
+        @JvmStatic
+        fun isWifi(context: Context): Boolean {
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetInfo = connectivityManager.activeNetworkInfo
+            return activeNetInfo != null && activeNetInfo.type == ConnectivityManager.TYPE_WIFI
+        }
     }
 }

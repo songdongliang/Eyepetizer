@@ -80,4 +80,6 @@ dependencies {
     implementation 'com.github.mmin18:realtimeblurview:1.1.0'
     // DataBinding 注解处理依赖
     kapt 'com.android.databinding:compiler:3.1.2'
+    //视频播放
+    implementation 'com.shuyu:GSYVideoPlayer:4.1.3'
 }
