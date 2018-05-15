@@ -26,4 +26,9 @@
     <dimen name="dp30">30dp</dimen>
     <dimen name="dp300">300dp</dimen>
     <dimen name="dp200">200dp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="text_small_more">@dimen/sp12</dimen>
+    <dimen name="text_small">@dimen/sp14</dimen>
+    <dimen name="dp135">135dp</dimen>
+    <dimen name="dp20">20dp</dimen>
 </resources>

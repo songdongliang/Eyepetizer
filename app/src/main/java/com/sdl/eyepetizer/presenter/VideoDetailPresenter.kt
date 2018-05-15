@@ -1,6 +1,7 @@
 package com.sdl.eyepetizer.presenter
 
 import android.app.Activity
+import android.util.Log
 import com.sdl.eyepetizer.EyepetizerApplication
 import com.sdl.eyepetizer.connertor.VideoDetailLoad
 import com.sdl.eyepetizer.dataFormat

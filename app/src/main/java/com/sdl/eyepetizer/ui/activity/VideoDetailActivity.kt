@@ -5,6 +5,12 @@ import android.os.Bundle
 import com.sdl.eyepetizer.R
 
 class VideoDetailActivity : BaseActivity() {
+
+    companion object {
+        val IMG_TRANSITION = "IMG_TRANSITION"
+        val TRANSITION = "TRANSITION"
+    }
+
     override fun layoutId(): Int {
         return R.layout.activity_video_detail
     }
@@ -21,13 +27,4 @@ class VideoDetailActivity : BaseActivity() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    companion object {
-        val IMG_TRANSITION = "IMG_TRANSITION"
-        val TRANSITION = "TRANSITION"
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video_detail)
-    }
 }

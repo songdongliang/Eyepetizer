@@ -42,5 +42,24 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="Text.SmallMore.White" parent="Text.SmallMore">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.Small.White" parent="Text.Small">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.Normal.White" parent="Text.Normal">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.Large.White" parent="Text.Large">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Text.LargeMore.White" parent="Text.LargeMore">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>

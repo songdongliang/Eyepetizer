@@ -50,4 +50,7 @@
     <string name="default_nickname">渣渣灰</string>
     <string name="follow">关注</string>
     <string name="category">分类</string>
+    <string name="like">喜欢</string>
+    <string name="share">分享</string>
+    <string name="reply">评论</string>
 </resources>

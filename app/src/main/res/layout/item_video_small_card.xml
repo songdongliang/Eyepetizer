@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="imageUrl"
+            type="String"/>
+    </data>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp16"
+        android:layout_marginStart="@dimen/dp16">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_darker_gray" />
+
+
+        <ImageView
+            android:id="@+id/image_video_small_card"
+            android:layout_width="@dimen/dp135"
+            android:layout_height="@dimen/dp80"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/dp16"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="@dimen/dp16"
+            android:layout_marginTop="@dimen/dp16"
+            tools:src="@color/color_darker_gray"
+            app:imageUrl="@{imageUrl}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_toEndOf="@+id/image_video_small_card">
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:textSize="@dimen/text_small"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="@dimen/dp5"
+                tools:text="舞动中国" />
+
+            <TextView
+                android:id="@+id/text_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp5"
+                android:textColor="@color/color_darker_gray"
+                android:textSize="@dimen/text_small_more"
+                tools:text="舞动中国" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

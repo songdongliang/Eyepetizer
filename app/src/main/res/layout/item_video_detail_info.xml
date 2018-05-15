@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="item"
+            type="com.sdl.eyepetizer.model.HomeBean.Issue.Item"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#44000000"
+            android:orientation="vertical"
+            android:padding="@dimen/dp16">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:singleLine="true"
+                        android:textColor="@color/backgroundColor"
+                        android:textSize="@dimen/sp16"
+                        android:textStyle="bold"
+                        tools:text="这家解忧杂货铺，用音乐治愈你！"
+                        android:text="@{item.data.title}"/>
+
+                    <TextView
+                        android:id="@+id/text_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp5"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:singleLine="true"
+                        android:textColor="@color/color_lighter_gray"
+                        android:textSize="@dimen/sp14"
+                        tools:text="#广告/精选" />
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    android:src="@mipmap/ic_action_down_white" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/expandable_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/color_lighter_gray"
+                android:textSize="12sp"
+                tools:text="亚当是个喜欢在学校惹是生非的青少年，但他的内心其实很混沌，因为家庭成员不能说的秘密，所以才导致他如此夸张，"
+                android:text="@{item.data.description}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_action_favorites"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableStart="@mipmap/ic_action_favorites"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_lighter_gray"
+                    tools:text="324"
+                    android:text="@{String.valueOf(item.data.consumption.collectionCount)}"/>
+
+                <TextView
+                    android:id="@+id/text_action_share"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableStart="@mipmap/ic_action_share"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_lighter_gray"
+                    tools:text="324"
+                    android:text="@{String.valueOf(item.data.consumption.shareCount)}"/>
+
+                <TextView
+                    android:id="@+id/text_action_reply"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableStart="@mipmap/ic_action_reply"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_lighter_gray"
+                    tools:text="324"
+                    android:text="@{String.valueOf(item.data.consumption.replyCount)}"/>
+
+                <TextView
+                    android:id="@+id/tv_action_offline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/dp10"
+                    android:drawableStart="@mipmap/ic_action_offline"
+                    android:gravity="center_vertical"
+                    android:text="@string/video_offline"
+                    android:textColor="@color/color_lighter_gray" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_darker_gray" />
+
+        <RelativeLayout
+            android:id="@+id/layout_author_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{item.data.author != null ? View.VISIBLE : View.GONE}">
+
+            <ImageView
+                android:id="@+id/image_avatar"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/dp16"
+                tools:src="@mipmap/default_avatar"
+                app:imageUrl="@{item.data.author.icon}"/>
+
+            <TextView
+                android:id="@+id/text_attention"
+                style="@style/Text.SmallMore.White"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/dp16"
+                android:background="@drawable/btn_radius_normal_bg"
+                android:paddingBottom="@dimen/dp3"
+                android:paddingLeft="@dimen/dp7"
+                android:paddingRight="@dimen/dp7"
+                android:paddingTop="@dimen/dp3"
+                android:text="@string/video_attention" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/image_avatar"
+                android:layout_toStartOf="@id/text_attention"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_author_name"
+                    style="@style/Text.SmallMore.White"
+                    android:singleLine="true"
+                    tools:text="My name"
+                    android:text="@{item.data.author.name}"/>
+
+                <TextView
+                    android:id="@+id/text_author_desc"
+                    style="@style/Text.SmallMore"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/color_darker_gray"
+                    android:singleLine="true"
+                    tools:text="发现艺术背后的故事"
+                    android:text="@{item.data.author.description}"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_darker_gray" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
