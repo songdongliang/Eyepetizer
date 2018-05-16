@@ -144,6 +144,11 @@ class StatusBarUtil {
         }
 
         @JvmOverloads
+        fun immersive(activity: Activity,color: Int = DEFAULT_COLOR,@FloatRange(from = 0.0, to = 1.0) alpha: Float = DEFAULT_ALPHA) {
+            immersive(activity.window,color,alpha)
+        }
+
+        @JvmOverloads
         fun immersive(window: Window,color: Int,@FloatRange(from = 0.0,to = 1.0) alpha: Float = 1f) {
             if (Build.VERSION.SDK_INT >= 21) {
                 window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
