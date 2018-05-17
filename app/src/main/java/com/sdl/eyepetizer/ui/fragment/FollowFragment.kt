@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.FollowAdapter
-import com.sdl.eyepetizer.connertor.FollowLoad
+import com.sdl.eyepetizer.load.FollowLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.presenter.FollowPresenter

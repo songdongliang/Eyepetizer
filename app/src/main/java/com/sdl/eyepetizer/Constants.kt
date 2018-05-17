@@ -6,5 +6,7 @@ class Constants private constructor(){
 
         val BUNDLE_VIDEO_DATA = "video_data"
         val BUNDLE_CATEGORY_DATA = "category_data"
+
+        val FILE_WATCH_HISTORY_NAME = "watch_history_file"
     }
 }

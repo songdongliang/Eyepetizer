@@ -1,6 +1,6 @@
 package com.sdl.eyepetizer.presenter
 
-import com.sdl.eyepetizer.connertor.CategoryLoad
+import com.sdl.eyepetizer.load.CategoryLoad
 import com.sdl.eyepetizer.exception.ExceptionHandle
 import com.sdl.eyepetizer.net.NetClient
 

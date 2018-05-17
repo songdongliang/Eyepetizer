@@ -2,7 +2,7 @@ package com.sdl.eyepetizer.ui.fragment
 
 import android.support.v4.app.Fragment
 import com.sdl.eyepetizer.R
-import com.sdl.eyepetizer.connertor.HotTabLoad
+import com.sdl.eyepetizer.load.HotTabLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.TabInfoBean
 import com.sdl.eyepetizer.presenter.HotTabPresenter

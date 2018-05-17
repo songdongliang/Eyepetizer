@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.CategoryAdapter
-import com.sdl.eyepetizer.connertor.CategoryLoad
+import com.sdl.eyepetizer.load.CategoryLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.CategoryBean
 import com.sdl.eyepetizer.presenter.CategoryPresenter

@@ -11,7 +11,7 @@ object SimpleBindingAdapter {
     @JvmStatic
     @BindingAdapter("app:imageUrl")
     fun loadUrl(imageView: ImageView, avatar: String) {
-        Glide.with(imageView.context).load(avatar).into(imageView)
+        Glide.with(imageView).load(avatar).into(imageView)
     }
 
     @JvmStatic

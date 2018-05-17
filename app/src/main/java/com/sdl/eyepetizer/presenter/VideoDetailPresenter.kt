@@ -1,9 +1,8 @@
 package com.sdl.eyepetizer.presenter
 
 import android.app.Activity
-import android.util.Log
 import com.sdl.eyepetizer.EyepetizerApplication
-import com.sdl.eyepetizer.connertor.VideoDetailLoad
+import com.sdl.eyepetizer.load.VideoDetailLoad
 import com.sdl.eyepetizer.dataFormat
 import com.sdl.eyepetizer.exception.ExceptionHandle
 import com.sdl.eyepetizer.model.HomeBean

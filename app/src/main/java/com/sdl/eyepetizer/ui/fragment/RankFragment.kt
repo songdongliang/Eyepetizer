@@ -1,10 +1,14 @@
 package com.sdl.eyepetizer.ui.fragment
 
-import com.sdl.eyepetizer.adapter.CategoryAdapter
+import android.support.v7.widget.LinearLayoutManager
+import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.CategoryDetailAdapter
-import com.sdl.eyepetizer.connertor.RankLoad
+import com.sdl.eyepetizer.load.RankLoad
+import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.presenter.RankPresenter
+import com.sdl.eyepetizer.showToast
+import kotlinx.android.synthetic.main.layout_recyclerview.*
 
 class RankFragment: BaseFragment(),RankLoad {
 
@@ -29,31 +33,46 @@ class RankFragment: BaseFragment(),RankLoad {
     }
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.layout_recyclerview
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mPresenter.attachLoad(this)
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.adapter = mAdapter
+        mLayoutStatusView = multipleStatusView
     }
 
     override fun lazyLoad() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (!apiUrl.isNullOrEmpty()) {
+            mPresenter.requestRankList(apiUrl!!)
+        }
     }
 
     override fun setRankList(itemList: ArrayList<HomeBean.Issue.Item>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mLayoutStatusView?.showContent()
+        mAdapter.addList(itemList)
     }
 
     override fun showError(errorMsg: String, errorCode: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        context?.showToast(errorMsg)
+        if (errorCode == ErrorStatus.NETWORK_ERROR) {
+            mLayoutStatusView?.showNoNetwork()
+        } else {
+            mLayoutStatusView?.showError()
+        }
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mLayoutStatusView?.showLoading()
     }
 
     override fun dismissLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.detachLoad()
+    }
 }

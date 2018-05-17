@@ -1,12 +1,15 @@
 package com.sdl.eyepetizer.ui.activity
 
 import android.annotation.TargetApi
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.transition.Transition
 import android.view.View
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.sdl.eyepetizer.Constants
@@ -14,14 +17,17 @@ import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.SimpleVideoAllCallBack
 import com.sdl.eyepetizer.adapter.VideoDetailAdapter
 import com.sdl.eyepetizer.binding.SimpleBindingAdapter
-import com.sdl.eyepetizer.connertor.VideoDetailLoad
+import com.sdl.eyepetizer.load.VideoDetailLoad
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.presenter.VideoDetailPresenter
 import com.sdl.eyepetizer.showToast
+import com.sdl.eyepetizer.util.CleanLeakUtil
 import com.sdl.eyepetizer.util.StatusBarUtil
+import com.sdl.eyepetizer.util.WatchHistoryUtil
+import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.listener.LockClickListener
-import com.shuyu.gsyvideoplayer.listener.VideoAllCallBack
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
+import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlinx.android.synthetic.main.activity_video_detail.*
@@ -61,32 +67,68 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
         return R.layout.activity_video_detail
     }
 
-    override fun setVideo(url: String) {
-
+    override fun onResume() {
+        super.onResume()
+        getCurPlay().onVideoResume()
+        isPause = false
     }
 
+    override fun onPause() {
+        super.onPause()
+        getCurPlay().onVideoPause()
+        isPause = true
+    }
+
+    override fun onDestroy() {
+        CleanLeakUtil.fixInputMethodManagerLeak(this)
+        super.onDestroy()
+        GSYVideoManager.releaseAllVideos()
+        orientationUtils.releaseListener()
+        mPresenter.detachLoad()
+    }
+
+    private fun getCurPlay(): GSYVideoPlayer {
+        return mVideoView.fullWindowPlayer ?: mVideoView
+    }
+
+    override fun setVideo(url: String) {
+        Logger.d("playUrl:$url")
+        mVideoView.setUp(url,false,"")
+        //自动播放
+        mVideoView.startPlayLogic()
+    }
+
+    /**
+     * 设置视频信息
+     */
     override fun setVideoInfo(item: HomeBean.Issue.Item) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        this.item = item
+        mAdapter.addData(item)
+        //请求相关的最新等视频
+        mPresenter.requestRelatedVideo(item.data?.id ?: 0)
     }
 
     override fun setBackground(url: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Glide.with(this)
+                .load(url)
+                .into(mVideoBackground)
     }
 
     override fun setRecentRelatedVideo(itemList: ArrayList<HomeBean.Issue.Item>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mAdapter.addList(itemList)
+        this.items = itemList
     }
 
     override fun setErrorMsg(errorMsg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun dismissLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mRefreshLayout.finishRefresh()
     }
 
     override fun initData() {
@@ -99,7 +141,14 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
      * 保存观看记录
      */
     private fun saveWatchVideoHistoryInfo(item: HomeBean.Issue.Item) {
-        val historyMap =
+        //保存之前要先查询sp中是否有该value的纪录，有则删除，这样保证搜索历史记录不会有重复条目
+        val historyMap = WatchHistoryUtil.getAll(Constants.FILE_WATCH_HISTORY_NAME,this)
+        for ((key,value) in historyMap) {
+            if (item == WatchHistoryUtil.getObject(Constants.FILE_WATCH_HISTORY_NAME,this,key)) {
+                WatchHistoryUtil.remove(Constants.FILE_WATCH_HISTORY_NAME,this,key)
+            }
+        }
+        WatchHistoryUtil.putObject(Constants.FILE_WATCH_HISTORY_NAME,this,"" + mFormat.format(Date()),item)
     }
 
     override fun initView() {
@@ -222,12 +271,41 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
         })
     }
 
+    /**
+     * 加载视频信息
+     */
     private fun loadVideoInfo() {
         mPresenter.loadVideoInfo(item)
     }
 
     override fun start() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        if (isPlay && !isPause) {
+            mVideoView.onConfigurationChanged(this,newConfig, orientationUtils)
+        }
+    }
+
+    /**
+     * 监听返回键
+     */
+    override fun onBackPressed() {
+        //先返回正常状态
+        if (orientationUtils.screenType == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            mVideoView.fullscreenButton.performClick()
+        }
+        //释放所有
+        mVideoView.setVideoAllCallBack(null)
+        GSYVideoManager.releaseAllVideos()
+        if (isTransiton && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            super.onBackPressed()
+        } else {
+            finish()
+            overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+        }
     }
 
 }

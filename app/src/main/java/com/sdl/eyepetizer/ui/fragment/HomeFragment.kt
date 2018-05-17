@@ -14,7 +14,7 @@ import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.HomeAdapter
-import com.sdl.eyepetizer.connertor.HomeLoad
+import com.sdl.eyepetizer.load.HomeLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.presenter.HomePresenter

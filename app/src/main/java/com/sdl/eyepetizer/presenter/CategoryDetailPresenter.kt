@@ -1,25 +1,22 @@
 package com.sdl.eyepetizer.presenter
 
-import com.sdl.eyepetizer.load.FollowLoad
-import com.sdl.eyepetizer.exception.ExceptionHandle
+import com.sdl.eyepetizer.load.CategoryDetailLoad
 import com.sdl.eyepetizer.net.NetClient
 
-class FollowPresenter: BasePresenter<FollowLoad>() {
+class CategoryDetailPresenter: BasePresenter<CategoryDetailLoad>() {
 
     private var nextPageUrl: String? = null
 
-    fun requestFollowList() {
-        loadController?.showLoading()
-        var disposable = NetClient.getFollowInfo()
+    fun getCategoryDetailList(id: Long) {
+        val disposable = NetClient.getCategoryDetailList(id)
                 .subscribe({ issue ->
                     loadController?.apply {
-                        dismissLoading()
                         nextPageUrl = issue.nextPageUrl
-                        setFollowInfo(issue)
+                        setCategoryDetailList(issue.itemList)
                     }
-                },{ throwable ->
+                },{ t ->
                     loadController?.apply {
-                        showError(ExceptionHandle.handleException(throwable),ExceptionHandle.errorCode)
+                        showError(t.toString())
                     }
                 })
         addSubscription(disposable)
@@ -31,14 +28,14 @@ class FollowPresenter: BasePresenter<FollowLoad>() {
                     .subscribe({ issue ->
                         loadController?.apply {
                             nextPageUrl = issue.nextPageUrl
-                            setFollowInfo(issue)
+                            setCategoryDetailList(issue.itemList)
                         }
-                    },{
+                    },{ t ->
                         loadController?.apply {
-                            showError(ExceptionHandle.handleException(it),ExceptionHandle.errorCode)
+                            showError(t.toString())
                         }
                     })
         }
-        addSubscription(disposable!!)
+        disposable?.let { addSubscription(it) }
     }
 }

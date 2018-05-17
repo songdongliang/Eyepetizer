@@ -29,6 +29,12 @@
     <dimen name="dp3">3dp</dimen>
     <dimen name="text_small_more">@dimen/sp12</dimen>
     <dimen name="text_small">@dimen/sp14</dimen>
+    <dimen name="text_normal">@dimen/sp16</dimen>
+    <dimen name="text_large">@dimen/sp18</dimen>
     <dimen name="dp135">135dp</dimen>
     <dimen name="dp20">20dp</dimen>
+    <dimen name="textSize_small_10">10sp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp25">25dp</dimen>
+    <item name="default_info" type="dimen" format="float">这个人很懒，什么也没留下...</item>
 </resources>

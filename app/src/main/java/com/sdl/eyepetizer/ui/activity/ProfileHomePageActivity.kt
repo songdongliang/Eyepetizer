@@ -1,13 +1,23 @@
 package com.sdl.eyepetizer.ui.activity
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import com.sdl.eyepetizer.R
 
-class ProfileHomePageActivity : AppCompatActivity() {
+/**
+ * 个人主页
+ */
+class ProfileHomePageActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_home_page)
+    override fun layoutId(): Int {
+        return R.layout.activity_profile_home_page
     }
+
+    override fun initData() {
+    }
+
+    override fun initView() {
+    }
+
+    override fun start() {
+    }
+
 }

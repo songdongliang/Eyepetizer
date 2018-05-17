@@ -1,6 +1,6 @@
 package com.sdl.eyepetizer.presenter
 
-import com.sdl.eyepetizer.connertor.HomeLoad
+import com.sdl.eyepetizer.load.HomeLoad
 import com.sdl.eyepetizer.exception.ExceptionHandle
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.net.NetClient

@@ -1,6 +1,6 @@
 package com.sdl.eyepetizer.presenter
 
-import com.sdl.eyepetizer.connertor.RankLoad
+import com.sdl.eyepetizer.load.RankLoad
 import com.sdl.eyepetizer.exception.ExceptionHandle
 import com.sdl.eyepetizer.net.NetClient
 

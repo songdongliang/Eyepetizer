@@ -1,6 +1,6 @@
 package com.sdl.eyepetizer.presenter
 
-import com.sdl.eyepetizer.connertor.ILoad
+import com.sdl.eyepetizer.load.ILoad
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 

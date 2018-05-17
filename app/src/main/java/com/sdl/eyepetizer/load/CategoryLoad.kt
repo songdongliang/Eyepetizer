@@ -1,4 +1,4 @@
-package com.sdl.eyepetizer.connertor
+package com.sdl.eyepetizer.load
 
 import com.sdl.eyepetizer.model.CategoryBean
 

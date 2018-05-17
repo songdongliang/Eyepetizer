@@ -2,9 +2,7 @@ package com.sdl.eyepetizer.util
 
 import android.content.Context
 import android.util.Base64
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.ObjectOutputStream
+import java.io.*
 
 class WatchHistoryUtil {
 
@@ -131,11 +129,28 @@ class WatchHistoryUtil {
             val sp = context.getSharedPreferences(fileName,Context.MODE_PRIVATE)
             try {
                 val wordBase64 = sp.getString(key,"")
-
+                if (wordBase64.isNullOrEmpty()) {
+                    return null
+                }
+                val objBytes = Base64.decode(wordBase64.toByteArray(),Base64.DEFAULT)
+                val bis = ByteArrayInputStream(objBytes)
+                val ois = ObjectInputStream(bis)
+                //将byte数组转换成product对象
+                val obj = ois.readObject()
+                ois.close()
+                bis.close()
+                return obj
             } catch (e: Exception) {
                 e.printStackTrace()
             }
             return null
+        }
+
+        /**
+         * 返回所有的键值对
+         */
+        fun getAll(fileName: String,context: Context): Map<String,*> {
+            return context.getSharedPreferences(fileName,Context.MODE_PRIVATE).all
         }
     }
 
