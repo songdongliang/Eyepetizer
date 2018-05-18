@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/parallax"
+        android:id="@+id/image_parallax"
         android:layout_width="match_parent"
         android:layout_height="670dp"
         android:layout_marginTop="-300dp"
@@ -137,7 +137,7 @@
                                     style="@style/AppTheme.Label.Description"
                                     android:layout_below="@id/relationship"
                                     android:layout_marginTop="@dimen/dp10"
-                                    android:text="@dimen/default_info"
+                                    android:text="@string/default_info"
                                     android:textColor="@color/color_darker_gray" />
 
                             </RelativeLayout>
@@ -240,11 +240,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <com.hazz.kotlinmvp.view.CircleImageView
+            <com.sdl.eyepetizer.ui.view.CircleImageView
                 android:id="@+id/toolbar_avatar"
                 android:layout_width="@dimen/dp32"
                 android:layout_height="@dimen/dp32"
-                android:layout_marginEnd="@dimen/padding_common_d"
+                android:layout_marginEnd="@dimen/dp5"
                 android:src="@mipmap/img_avatar"
                 app:borderColor="@color/color_gray"
                 app:borderWidth="2dp"

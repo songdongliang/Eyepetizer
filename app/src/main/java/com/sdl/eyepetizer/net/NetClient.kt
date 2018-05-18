@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
 
 object NetClient {
@@ -66,6 +67,14 @@ object NetClient {
 
     fun getCategoryDetailList(id: Long): Observable<HomeBean.Issue> {
         return threadTransform(apiService.getCategoryDetailList(id))
+    }
+
+    fun getHotWord(): Observable<ArrayList<String>> {
+        return threadTransform(apiService.getHotWord())
+    }
+
+    fun getSearchData(query: String) : Observable<HomeBean.Issue> {
+        return threadTransform(apiService.getSearchData(query))
     }
 
     private fun <T> threadTransform(observable: Observable<T>) : Observable<T> {

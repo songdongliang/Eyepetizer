@@ -2,13 +2,13 @@ package com.sdl.eyepetizer
 
 import android.app.Application
 import android.content.Context
-import com.orhanobut.logger.AndroidLogAdapter
-import com.orhanobut.logger.FormatStrategy
-import com.orhanobut.logger.Logger
-import com.orhanobut.logger.PrettyFormatStrategy
+import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
+import com.orhanobut.logger.*
+import com.sdl.eyepetizer.util.DisplayManager
 import kotlin.properties.Delegates
 
-class EyepetizerApplication: Application() {
+class EyepetizerApplication: MultiDexApplication() {
 
     companion object {
 
@@ -16,10 +16,16 @@ class EyepetizerApplication: Application() {
             private set
     }
 
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
+
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
         initLoggerConfig()
+        DisplayManager.init(this)
     }
 
     fun initLoggerConfig() {
