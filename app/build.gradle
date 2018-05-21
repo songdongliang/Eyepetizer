@@ -48,44 +48,59 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
+
     //日志框架
     implementation 'com.orhanobut:logger:2.2.0'
+
     //多状态view
     implementation 'com.classic.common:multiple-status-view:1.4'
+
     //leakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
     //smartRefreshLayout
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+
     //权限检查
     implementation 'me.weyye.hipermission:library:1.0.7'
+
     //网络相关
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+//    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     //阿里的json
     implementation 'com.alibaba:fastjson:1.2.29'
+
     //图片处理
     implementation 'com.github.bumptech.glide:glide:4.7.1'
-    kapt  'com.github.bumptech.glide:compiler:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
     //轮播插件
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+
     // 底部菜单
     implementation('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
+
     //模糊处理
     implementation 'com.github.mmin18:realtimeblurview:1.1.0'
+
     // DataBinding 注解处理依赖
     kapt 'com.android.databinding:compiler:3.1.2'
+
     //视频播放
     implementation 'com.shuyu:GSYVideoPlayer:4.1.3'
+
     //google flex
     implementation 'com.google.android:flexbox:1.0.0'
+
     //multidex
     implementation 'com.android.support:multidex:1.0.3'
 }

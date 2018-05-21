@@ -12,13 +12,20 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import cn.bingoogolapple.bgabanner.BGABanner
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.sdl.eyepetizer.Constants
 import com.sdl.eyepetizer.R
+import com.sdl.eyepetizer.databinding.ItemHomeBannerBinding
 import com.sdl.eyepetizer.databinding.ItemHomeContentBinding
 import com.sdl.eyepetizer.databinding.ItemHomeHeaderBinding
 import com.sdl.eyepetizer.durationFormat
 import com.sdl.eyepetizer.model.HomeBean
 import com.sdl.eyepetizer.ui.activity.VideoDetailActivity
+import io.reactivex.Observable
+import kotlinx.android.synthetic.main.activity_category_detail.view.*
 
 class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() {
 
@@ -78,13 +85,42 @@ class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() 
     }
 
     override fun onBindViewHolder(holder: BindingViewHolder<ViewDataBinding>, position: Int) {
-        var viewDataBinding: ViewDataBinding? = holder.binding
+        val viewDataBinding: ViewDataBinding? = holder.binding
         when(getItemViewType(position)) {
             ITEM_TYPE_TEXT_HEADER -> {
                 viewDataBinding as ItemHomeHeaderBinding;
                 viewDataBinding.headTitle = items!![position + bannerItemSize - 1].data.text ?: ""
             }
-            ITEM_TYPE_BANNER -> println()
+            ITEM_TYPE_BANNER -> {
+                val bannerItemData: ArrayList<HomeBean.Issue.Item>? = items?.take(bannerItemSize)?.toCollection(ArrayList())
+                val bannerFeedList = ArrayList<String>()
+                val bannerTitleList = ArrayList<String>()
+                //取出banner显示的image和title
+                Observable.fromIterable(bannerItemData)
+                        .subscribe({
+                            bannerFeedList.add(it?.data?.cover?.feed?:"")
+                            bannerTitleList.add(it?.data?.title?:"")
+                        })
+                //设置banner
+                viewDataBinding as ItemHomeBannerBinding
+                viewDataBinding.banner.run {
+                    setAutoPlayAble(bannerFeedList.size > 1)
+                    setData(bannerFeedList,bannerTitleList)
+                    setAdapter(object : BGABanner.Adapter<ImageView,String>{
+                        override fun fillBannerItem(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
+                            Glide.with(itemView!!)
+                                    .load(model)
+                                    .transition(DrawableTransitionOptions().crossFade())
+                                    .into(imageView)
+                        }
+                    })
+                    //kotlin没有使用到的参数用"_"代替
+                    setDelegate { _, imageView, _, position ->
+                        goToVideoPlayer(imageView.context as Activity,imageView,bannerItemData!![position])
+                    }
+                }
+
+            }
             ITEM_TYPE_CONTENT -> {
                 viewDataBinding as ItemHomeContentBinding
                 setVideoItem(viewDataBinding,items!![position + bannerItemSize - 1])

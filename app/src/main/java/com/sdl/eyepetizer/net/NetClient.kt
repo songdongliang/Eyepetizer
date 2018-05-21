@@ -8,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
@@ -30,8 +30,7 @@ object NetClient {
                 .client(builder.build())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                //TODO 这里baseUrl要替换成开眼的
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl("http://baobab.kaiyanapp.com/api/")
                 .build()
         apiService = retrofit.create(ApiService::class.java)

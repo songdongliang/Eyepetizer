@@ -75,22 +75,31 @@ class MainActivity : BaseActivity() {
         when (position) {
             //首页
             0 -> mHomeFragment ?.let {
-                transaction.hide(it)
+                transaction.show(it)
             } ?: HomeFragment.getInstance(mTitles[position]).let {
                 mHomeFragment = it
                 transaction.add(R.id.container,it,"home")
             }
             //发现
             1 -> mDiscoveryFragment?.let {
-
+                transaction.show(it)
+            } ?: DiscoveryFragment.getInstance(mTitles[position]).let {
+                mDiscoveryFragment = it
+                transaction.add(R.id.container,it,"discovery")
             }
             //热门
             2 -> mHotFragment?.let {
-
+                transaction.show(it)
+            } ?: HotFragment.getInstance(mTitles[position]).let {
+                mHotFragment = it
+                transaction.add(R.id.container,it,"hot")
             }
             //我的
             3 -> mMineFragment?.let {
-
+                transaction.show(it)
+            } ?: MineFragment.getInstance(mTitles[position]).let{
+                mMineFragment = it
+                transaction.add(R.id.container,it,"mine")
             }
             else -> {
 
@@ -102,12 +111,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun hideFragments(transaction: FragmentTransaction?) {
-//        transaction?.let {
-//            it.hide(mHomeFragment)
-//            it.hide(mDiscoveryFragment)
-//            it.hide(mHotFragment)
-//            it.hide(mMineFragment)
-//        }
         mHomeFragment?.let { transaction?.hide(it) }
         mDiscoveryFragment?.let { transaction?.hide(it) }
         mHotFragment?.let { transaction?.hide(it) }

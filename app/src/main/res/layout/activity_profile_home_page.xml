@@ -47,7 +47,7 @@
                         android:id="@+id/collapse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:contentScrim="?android:attr/colorPrimary"
+
                         app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                         app:titleEnabled="false"
                         tools:targetApi="LOLLIPOP">

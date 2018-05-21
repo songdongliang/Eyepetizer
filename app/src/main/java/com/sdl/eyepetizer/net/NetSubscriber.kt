@@ -3,11 +3,15 @@ package com.sdl.eyepetizer.net
 import com.alibaba.fastjson.JSON
 import com.google.gson.JsonSyntaxException
 import com.orhanobut.logger.Logger
-import retrofit2.adapter.rxjava.HttpException
-import rx.Subscriber
+import org.reactivestreams.Subscriber
+import org.reactivestreams.Subscription
+import retrofit2.adapter.rxjava2.HttpException
 import java.net.SocketTimeoutException
 
 class NetSubscriber<T>: Subscriber<T> {
+    override fun onSubscribe(s: Subscription?) {
+
+    }
 
     private var type: Int = -1
 
@@ -24,7 +28,7 @@ class NetSubscriber<T>: Subscriber<T> {
         subscriberListener!!.onNext(t,type)
     }
 
-    override fun onCompleted() {
+    override fun onComplete() {
         Logger.d("onCompleted %d",type)
         subscriberListener!!.onCompleted(type)
     }
