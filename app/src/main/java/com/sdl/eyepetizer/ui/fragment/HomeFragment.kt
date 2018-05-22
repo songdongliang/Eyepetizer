@@ -14,6 +14,7 @@ import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.HomeAdapter
+import com.sdl.eyepetizer.adapter.SimpleTextAdapter
 import com.sdl.eyepetizer.load.HomeLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.HomeBean
@@ -45,7 +46,7 @@ class HomeFragment: BaseFragment(),HomeLoad {
     private var mMaterialHeader: MaterialHeader? = null
 
     private val linearLayoutManager by lazy {
-        LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        LinearLayoutManager(activity)
     }
 
     private val simpleDateFormat by lazy {
@@ -121,7 +122,7 @@ class HomeFragment: BaseFragment(),HomeLoad {
         })
 
         image_search.setOnClickListener {
-            openSerarchActivity()
+            openSearchActivity()
         }
 
         mLayoutStatusView = multipleStatusView
@@ -141,9 +142,9 @@ class HomeFragment: BaseFragment(),HomeLoad {
         mHomeAdapter = HomeAdapter(activity as Context,homeBean.issueList[0].itemList)
         mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
 
-        mRecyclerView.adapter = mHomeAdapter
         mRecyclerView.layoutManager = linearLayoutManager
         mRecyclerView.itemAnimator = DefaultItemAnimator()
+        mRecyclerView.adapter = mHomeAdapter
     }
 
     override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
@@ -171,7 +172,7 @@ class HomeFragment: BaseFragment(),HomeLoad {
         smart_refresh_layout.finishRefresh()
     }
 
-    fun openSerarchActivity() {
+    private fun openSearchActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity!!,image_search,image_search.transitionName)
             startActivity(Intent(activity,SearchActivity::class.java),options.toBundle())

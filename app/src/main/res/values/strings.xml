@@ -60,4 +60,5 @@
     <string name="watch_record">观看记录</string>
     <string name="default_info">这个人很懒，什么也没留下...</string>
     <string name="input_interest_word">请输入你感兴趣的关键字</string>
+    <string name="test_text">测试文本</string>
 </resources>

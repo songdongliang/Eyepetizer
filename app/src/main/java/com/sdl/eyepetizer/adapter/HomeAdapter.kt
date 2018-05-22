@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.graphics.drawable.Drawable
 import android.support.v4.util.Pair
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
@@ -16,6 +17,8 @@ import android.widget.ImageView
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import com.orhanobut.logger.Logger
 import com.sdl.eyepetizer.Constants
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.databinding.ItemHomeBannerBinding
@@ -27,7 +30,7 @@ import com.sdl.eyepetizer.ui.activity.VideoDetailActivity
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_category_detail.view.*
 
-class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() {
+class HomeAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>> {
 
     var items: ArrayList<HomeBean.Issue.Item>? = null
 
@@ -35,13 +38,16 @@ class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() 
 
     var bannerItemSize = 0
 
+    private var mContext: Context
+
     companion object {
         private val ITEM_TYPE_BANNER = 1 //Banner类型
         private val ITEM_TYPE_TEXT_HEADER = 2 //textHeader
         private val ITEM_TYPE_CONTENT = 3 //item
     }
 
-    constructor(context: Context,items: ArrayList<HomeBean.Issue.Item>) : this() {
+    constructor(context: Context,items: ArrayList<HomeBean.Issue.Item>) : super() {
+        mContext = context
         this.inflater = LayoutInflater.from(context)
         this.items = items
     }
@@ -56,10 +62,11 @@ class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() 
     }
 
     override fun getItemViewType(position: Int): Int {
+        Logger.i("getItemViewType---------" + position.toString())
         return when {
-            position == 0 -> ITEM_TYPE_BANNER
-            items!![position + bannerItemSize - 1].type == "textHeader" -> ITEM_TYPE_TEXT_HEADER
-            else -> ITEM_TYPE_CONTENT
+            items!![position].type == "video" -> ITEM_TYPE_CONTENT
+            items!![position].type == "textHeader" -> ITEM_TYPE_TEXT_HEADER
+            else -> ITEM_TYPE_BANNER
         }
     }
 
@@ -77,53 +84,50 @@ class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() 
      * 得到RecyclerView Item的数量 (Banner作为一个item)
      */
     override fun getItemCount(): Int {
-        return when {
-            items!!.size > bannerItemSize -> items!!.size - bannerItemSize + 1
-            items!!.isEmpty() -> 0
-            else -> 1
-        }
+        return items!!.size
     }
 
     override fun onBindViewHolder(holder: BindingViewHolder<ViewDataBinding>, position: Int) {
+        Logger.i("onBindViewHolder---" + position.toString())
         val viewDataBinding: ViewDataBinding? = holder.binding
-        when(getItemViewType(position)) {
-            ITEM_TYPE_TEXT_HEADER -> {
-                viewDataBinding as ItemHomeHeaderBinding;
-                viewDataBinding.headTitle = items!![position + bannerItemSize - 1].data.text ?: ""
+        when(viewDataBinding) {
+            is ItemHomeHeaderBinding -> {
+                viewDataBinding.headTitle = items!![position].data.text
             }
-            ITEM_TYPE_BANNER -> {
+            is ItemHomeBannerBinding -> {
                 val bannerItemData: ArrayList<HomeBean.Issue.Item>? = items?.take(bannerItemSize)?.toCollection(ArrayList())
                 val bannerFeedList = ArrayList<String>()
                 val bannerTitleList = ArrayList<String>()
                 //取出banner显示的image和title
                 Observable.fromIterable(bannerItemData)
+                        .filter { it.type != "textHeader" }
                         .subscribe({
                             bannerFeedList.add(it?.data?.cover?.feed?:"")
                             bannerTitleList.add(it?.data?.title?:"")
                         })
                 //设置banner
-                viewDataBinding as ItemHomeBannerBinding
                 viewDataBinding.banner.run {
                     setAutoPlayAble(bannerFeedList.size > 1)
                     setData(bannerFeedList,bannerTitleList)
                     setAdapter(object : BGABanner.Adapter<ImageView,String>{
                         override fun fillBannerItem(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
+                            val options = RequestOptions()
+                            options.placeholder(R.mipmap.placeholder_banner).error(R.mipmap.placeholder_banner)
                             Glide.with(itemView!!)
                                     .load(model)
                                     .transition(DrawableTransitionOptions().crossFade())
-                                    .into(imageView)
+                                    .apply(options)
+                                    .into(itemView)
                         }
                     })
                     //kotlin没有使用到的参数用"_"代替
                     setDelegate { _, imageView, _, position ->
-                        goToVideoPlayer(imageView.context as Activity,imageView,bannerItemData!![position])
+                        goToVideoPlayer(mContext as Activity,imageView,bannerItemData!![position])
                     }
                 }
-
             }
-            ITEM_TYPE_CONTENT -> {
-                viewDataBinding as ItemHomeContentBinding
-                setVideoItem(viewDataBinding,items!![position + bannerItemSize - 1])
+            is ItemHomeContentBinding -> {
+                setVideoItem(viewDataBinding,items!![position])
             }
         }
     }
@@ -132,7 +136,7 @@ class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() 
     private fun setVideoItem(itemHomeContentBinding: ItemHomeContentBinding,item: HomeBean.Issue.Item) {
         val itemData = item.data
         val defAvatar = R.mipmap.default_avatar
-        val cover = itemData.cover.feed
+        val cover = itemData?.cover?.feed
         var avatar = itemData.author.icon
         var tagText: String? = "#"
 
@@ -168,7 +172,7 @@ class HomeAdapter(): RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>>() 
     /**
      * 跳转到视频详情页
      */
-    fun goToVideoPlayer(activity: Activity, view: View,item: HomeBean.Issue.Item) {
+    private fun goToVideoPlayer(activity: Activity, view: View,item: HomeBean.Issue.Item) {
         var intent = Intent(activity,VideoDetailActivity::class.java)
         intent.putExtra(Constants.BUNDLE_VIDEO_DATA,item)
         intent.putExtra(VideoDetailActivity.TRANSITION,true)

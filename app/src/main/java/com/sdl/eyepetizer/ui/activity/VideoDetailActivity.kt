@@ -134,6 +134,9 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
     override fun initData() {
         item = intent.getSerializableExtra(Constants.BUNDLE_VIDEO_DATA) as HomeBean.Issue.Item
         isTransiton = intent.getBooleanExtra(TRANSITION,false)
+        //过渡动画
+        initTransition()
+        initVideoViewConfig()
         saveWatchVideoHistoryInfo(item)
     }
 
@@ -153,9 +156,7 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
 
     override fun initView() {
         mPresenter.attachLoad(this)
-        //过渡动画
-        initTransition()
-        initVideoViewConfig()
+
 
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mRecyclerView.adapter = mAdapter
@@ -279,7 +280,7 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {

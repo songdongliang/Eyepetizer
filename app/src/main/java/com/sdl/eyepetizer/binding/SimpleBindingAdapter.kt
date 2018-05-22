@@ -5,13 +5,20 @@ import android.databinding.BindingConversion
 import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.sdl.eyepetizer.R
 
 object SimpleBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("app:imageUrl")
     fun loadUrl(imageView: ImageView, avatar: String) {
-        Glide.with(imageView).load(avatar).into(imageView)
+        if (avatar.isNullOrEmpty()) {
+            return
+        }
+        val options = RequestOptions()
+        options.placeholder(R.mipmap.placeholder_banner).error(R.mipmap.placeholder_banner)
+        Glide.with(imageView).load(avatar).apply(options).into(imageView)
     }
 
     @JvmStatic

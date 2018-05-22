@@ -42,10 +42,10 @@ class HomePresenter: BasePresenter<HomeLoad>() {
                             newBannerItemList.remove(item)
                         }
                         //重新赋值Banner长度
-                        homeBean.issueList[0].count = homeBean.issueList[0].itemList.size
+//                        this@HomePresenter.homeBean!!.issueList[0].count = homeBean.issueList[0].itemList.size
                         //赋值过滤后的数据 + banner数据
-                        homeBean.issueList[0].itemList.addAll(newBannerItemList)
-                        setHomeData(homeBean)
+                        this@HomePresenter.homeBean!!.issueList[0].itemList.addAll(newBannerItemList)
+                        setHomeData(this@HomePresenter.homeBean!!)
                     }
                 }, { t ->
                     loadController?.apply {
