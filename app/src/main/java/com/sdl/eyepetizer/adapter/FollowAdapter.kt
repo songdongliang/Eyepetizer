@@ -16,8 +16,6 @@ class FollowAdapter: RecyclerView.Adapter<BindingViewHolder<ItemFollowBinding>> 
 
     private var mInflater: LayoutInflater? = null
 
-
-
     constructor(context: Context, items: ArrayList<HomeBean.Issue.Item>) {
         this.mInflater = LayoutInflater.from(context)
         this.items = items

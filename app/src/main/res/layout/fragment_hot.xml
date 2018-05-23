@@ -27,10 +27,10 @@
         android:layout_height="@dimen/dp40"
         android:background="@color/color_title_bg"
         app:tabMinWidth="@dimen/dp100"
-        app:tabIndicatorColor="#000"
+        app:tabIndicatorColor="#000000"
         app:tabIndicatorHeight="@dimen/dp2"
-        app:tabSelectedTextColor="#000"
-        app:tabTextColor="#5000"
+        app:tabSelectedTextColor="#000000"
+        app:tabTextColor="#80000000"
         app:layout_constraintTop_toBottomOf="@id/toolbar"/>
     <View
         android:id="@+id/view_line"

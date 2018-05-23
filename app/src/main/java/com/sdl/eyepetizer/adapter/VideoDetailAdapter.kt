@@ -97,6 +97,7 @@ class VideoDetailAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding
     private fun setSmallCard(item: HomeBean.Issue.Item, binding: ViewDataBinding?) {
         var itemVideoSmallCard = binding as ItemVideoSmallCardBinding
         itemVideoSmallCard.textTitle.text = item.data.title
+        itemVideoSmallCard.imageUrl = item.data.cover.detail
         itemVideoSmallCard.textTag.text = "#${item.data.category} / ${durationFormat(item.data.duration)}"
         itemVideoSmallCard.root.setOnClickListener {
             mOnItemClickRelatedVideo?.invoke(item)
@@ -112,7 +113,7 @@ class VideoDetailAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding
     private fun setVideoDetailInfo(item: HomeBean.Issue.Item, binding: ViewDataBinding?) {
         var binding: ItemVideoDetailInfoBinding = binding as ItemVideoDetailInfoBinding
         binding.textTag.text = "#${item.data?.category} / ${durationFormat(item.data?.duration)}"
-
+        binding.item = item
         with(binding) {
             var context = binding.root.context
             textActionFavorites.setOnClickListener {

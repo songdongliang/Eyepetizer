@@ -21,10 +21,12 @@ import kotlinx.android.synthetic.main.item_category_detail.view.*
 
 class CategoryDetailAdapter: RecyclerView.Adapter<BindingViewHolder<ItemCategoryDetailBinding>> {
 
+    private val context: Context
     private var mLayoutInflater: LayoutInflater? = null
     private var itemList: ArrayList<HomeBean.Issue.Item>? = null
 
     constructor(context: Context,itemList: ArrayList<HomeBean.Issue.Item>) {
+        this.context = context
         mLayoutInflater = LayoutInflater.from(context)
         this.itemList = itemList
     }
@@ -53,13 +55,13 @@ class CategoryDetailAdapter: RecyclerView.Adapter<BindingViewHolder<ItemCategory
         val timeFormat = durationFormat(itemData.duration)
         binding?.textTag?.text = "#${itemData.category}/$timeFormat"
         binding?.root?.setOnClickListener {
-            goToVideoPlayer(binding.imageCategoryDetail.context as Activity,binding.imageCategoryDetail,itemData)
+            goToVideoPlayer(context as Activity,binding.imageCategoryDetail,itemList!![position])
         }
     }
 
-    private fun goToVideoPlayer(activity: Activity, view: View,itemData: HomeBean.Issue.Item.Data ) {
+    private fun goToVideoPlayer(activity: Activity, view: View,item: HomeBean.Issue.Item ) {
         val intent = Intent(activity,VideoDetailActivity::class.java)
-        intent.putExtra(Constants.BUNDLE_VIDEO_DATA,itemData)
+        intent.putExtra(Constants.BUNDLE_VIDEO_DATA,item)
         intent.putExtra(VideoDetailActivity.TRANSITION,true)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             val pair = Pair<View,String>(view,VideoDetailActivity.IMG_TRANSITION)

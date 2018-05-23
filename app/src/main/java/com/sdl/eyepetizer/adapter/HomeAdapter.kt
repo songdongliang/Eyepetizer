@@ -62,7 +62,6 @@ class HomeAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>> {
     }
 
     override fun getItemViewType(position: Int): Int {
-        Logger.i("getItemViewType---------" + position.toString())
         return when {
             items!![position].type == "video" -> ITEM_TYPE_CONTENT
             items!![position].type == "textHeader" -> ITEM_TYPE_TEXT_HEADER
@@ -88,7 +87,6 @@ class HomeAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>> {
     }
 
     override fun onBindViewHolder(holder: BindingViewHolder<ViewDataBinding>, position: Int) {
-        Logger.i("onBindViewHolder---" + position.toString())
         val viewDataBinding: ViewDataBinding? = holder.binding
         when(viewDataBinding) {
             is ItemHomeHeaderBinding -> {

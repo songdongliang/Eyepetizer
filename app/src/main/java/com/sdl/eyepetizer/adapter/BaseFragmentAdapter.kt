@@ -41,5 +41,7 @@ class BaseFragmentAdapter : FragmentPagerAdapter {
         return fragmentList!!.size
     }
 
-
+    override fun getPageTitle(position: Int): CharSequence? {
+        return mTitles!![position]
+    }
 }

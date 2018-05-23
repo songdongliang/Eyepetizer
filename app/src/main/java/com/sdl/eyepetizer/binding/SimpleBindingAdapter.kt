@@ -14,6 +14,7 @@ object SimpleBindingAdapter {
     @BindingAdapter("app:imageUrl")
     fun loadUrl(imageView: ImageView, avatar: String) {
         if (avatar.isNullOrEmpty()) {
+            imageView.setImageResource(R.mipmap.placeholder_banner)
             return
         }
         val options = RequestOptions()

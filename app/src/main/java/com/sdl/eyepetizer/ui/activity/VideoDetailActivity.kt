@@ -3,6 +3,7 @@ package com.sdl.eyepetizer.ui.activity
 import android.annotation.TargetApi
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
+import android.databinding.DataBindingUtil
 import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
@@ -105,7 +106,7 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
         this.item = item
         mAdapter.addData(item)
         //请求相关的最新等视频
-        mPresenter.requestRelatedVideo(item.data?.id ?: 0)
+        mPresenter.requestRelatedVideo(item.data.id)
     }
 
     override fun setBackground(url: String) {
@@ -156,8 +157,6 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
 
     override fun initView() {
         mPresenter.attachLoad(this)
-
-
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         mRecyclerView.adapter = mAdapter
         //设置相关视频Item的点击事件

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.sdl.eyepetizer.Constants
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.CategoryDetailAdapter
+import com.sdl.eyepetizer.binding.SimpleBindingAdapter
 import com.sdl.eyepetizer.databinding.ActivityCategoryDetailBinding
 import com.sdl.eyepetizer.load.CategoryDetailLoad
 import com.sdl.eyepetizer.model.CategoryBean
@@ -39,10 +40,9 @@ class CategoryDetailActivity : BaseActivity(),CategoryDetailLoad {
 
     override fun initData() {
         category = intent.getSerializableExtra(Constants.BUNDLE_CATEGORY_DATA) as? CategoryBean
-
-        val binding: ActivityCategoryDetailBinding = DataBindingUtil.inflate(layoutInflater,R.layout.activity_category_detail,null,false)
-        binding.category = category
-
+        //TODO 这里 binding.category = category为啥就不行了呢
+        collapsing_toolbar_layout.title = category?.name
+        SimpleBindingAdapter.loadUrl(imageView,category?.headerImage!!)
         tv_category_desc.text = "#${category?.description}"
 
         collapsing_toolbar_layout.setExpandedTitleColor(Color.WHITE)

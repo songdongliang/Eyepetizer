@@ -8,9 +8,11 @@ class CategoryDetailPresenter: BasePresenter<CategoryDetailLoad>() {
     private var nextPageUrl: String? = null
 
     fun getCategoryDetailList(id: Long) {
+        loadController?.showLoading()
         val disposable = NetClient.getCategoryDetailList(id)
                 .subscribe({ issue ->
                     loadController?.apply {
+                        dismissLoading()
                         nextPageUrl = issue.nextPageUrl
                         setCategoryDetailList(issue.itemList)
                     }

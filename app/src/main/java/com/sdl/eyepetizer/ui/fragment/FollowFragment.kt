@@ -24,7 +24,7 @@ class FollowFragment: BaseFragment(),FollowLoad {
     }
 
     private val mFollowAdapter by lazy {
-        FollowAdapter(activity!!,itemList)
+        FollowAdapter(context!!,itemList)
     }
 
     companion object {

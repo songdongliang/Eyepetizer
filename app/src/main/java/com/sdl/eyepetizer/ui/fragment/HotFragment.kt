@@ -2,6 +2,7 @@ package com.sdl.eyepetizer.ui.fragment
 
 import android.support.v4.app.Fragment
 import com.sdl.eyepetizer.R
+import com.sdl.eyepetizer.adapter.BaseFragmentAdapter
 import com.sdl.eyepetizer.load.HotTabLoad
 import com.sdl.eyepetizer.exception.ErrorStatus
 import com.sdl.eyepetizer.model.TabInfoBean
@@ -40,7 +41,9 @@ class HotFragment: BaseFragment(),HotTabLoad {
         tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) {it.name}
         tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) {RankFragment.getInstance(it.apiUrl)}
 
+        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragmentList,mTabTitleList)
         mTabLayout.setupWithViewPager(mViewPager)
+
     }
 
     override fun showError(errorMsg: String, errorCode: Int) {

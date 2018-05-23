@@ -1,6 +1,7 @@
 package com.sdl.eyepetizer.ui.fragment
 
 import android.graphics.Rect
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.sdl.eyepetizer.R
@@ -63,6 +64,8 @@ class CategoryFragment: BaseFragment(),CategoryLoad {
     override fun initView() {
         mPresenter.attachLoad(this)
         mLayoutStatusView = multipleStatusView
+        mRecyclerView.layoutManager = LinearLayoutManager(context)
+        mRecyclerView.adapter = mAdapter
         mRecyclerView.addItemDecoration(object : RecyclerView.ItemDecoration(){
             override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
                 val position = parent?.getChildPosition(view)

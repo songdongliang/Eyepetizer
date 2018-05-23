@@ -110,7 +110,7 @@ class HomeFragment: BaseFragment(),HomeLoad {
                         toolbar.setBackgroundColor(ContextCompat.getColor(context!!,R.color.color_title_bg))
                         image_search.setImageResource(R.mipmap.ic_action_search_black)
                         val itemList = mHomeAdapter?.items
-                        val item = itemList!![currentVisibleItemPosition + mHomeAdapter!!.bannerItemSize - 1]
+                        val item = itemList!![currentVisibleItemPosition]
                         if (item.type == "textHeader") {
                             text_header_title.text = item.data!!.text
                         } else {
@@ -140,7 +140,7 @@ class HomeFragment: BaseFragment(),HomeLoad {
         mLayoutStatusView?.showContent()
         Logger.d(homeBean)
         mHomeAdapter = HomeAdapter(activity as Context,homeBean.issueList[0].itemList)
-        mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
+//        mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
 
         mRecyclerView.layoutManager = linearLayoutManager
         mRecyclerView.itemAnimator = DefaultItemAnimator()

@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit
 
 object NetClient {
 
-    private val TAG: String = "NetClient"
-
     private val DEFAULT_TIMEOUT = 20L
 
     private var apiService: ApiService
@@ -79,13 +77,5 @@ object NetClient {
     private fun <T> threadTransform(observable: Observable<T>) : Observable<T> {
         return observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
-
-//    private fun <T> toSubscribe(o: Observable<T>,s: Subscriber<Any>) {
-//        o.subscribeOn(Schedulers.io())
-//                .debounce(1L,TimeUnit.SECONDS)
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(s)
-//    }
 
 }
