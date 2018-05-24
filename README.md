@@ -14,19 +14,19 @@
    - 大致框架完成，精选-发现-我的
 
 # 感谢以下开源库
-日志 [https://github.com/orhanobut/logger](https://github.com/orhanobut/logger)  
-多状态切换view[https://github.com/qyxxjd/MultipleStatusView](https://github.com/qyxxjd/MultipleStatusView)  
-内存泄漏检查 [https://github.com/square/leakcanary](https://github.com/square/leakcanary)  
-刷新库 [https://github.com/scwang90/SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)  
-权限检查 [https://github.com/yewei02538/HiPermission](https://github.com/yewei02538/HiPermission)  
-图片处理 [https://github.com/bumptech/glide](https://github.com/bumptech/glide)  
-图片轮播 [https://github.com/bingoogolapple/BGABanner-Android](https://github.com/bingoogolapple/BGABanner-Android)  
-底部菜单切换 [https://github.com/H07000223/FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)  
-模糊处理 [https://github.com/mmin18/RealtimeBlurView](https://github.com/mmin18/RealtimeBlurView)  
-视频播放 [https://github.com/CarGuo/GSYVideoPlayer](https://github.com/CarGuo/GSYVideoPlayer)  
-流式布局 [https://github.com/google/flexbox-layout](https://github.com/google/flexbox-layout)  
-multidex [https://github.com/casidiablo/multidex](https://github.com/casidiablo/multidex)  
-rx家族，retrofit，地址就不贴了 
+- 日志 [https://github.com/orhanobut/logger](https://github.com/orhanobut/logger)  
+- 多状态切换view[https://github.com/qyxxjd/MultipleStatusView](https://github.com/qyxxjd/MultipleStatusView)  
+- 内存泄漏检查 [https://github.com/square/leakcanary](https://github.com/square/leakcanary)  
+- 刷新库 [https://github.com/scwang90/SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)  
+- 权限检查 [https://github.com/yewei02538/HiPermission](https://github.com/yewei02538/HiPermission)  
+- 图片处理 [https://github.com/bumptech/glide](https://github.com/bumptech/glide)  
+- 图片轮播 [https://github.com/bingoogolapple/BGABanner-Android](https://github.com/bingoogolapple/BGABanner-Android)  
+- 底部菜单切换 [https://github.com/H07000223/FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)  
+- 模糊处理 [https://github.com/mmin18/RealtimeBlurView](https://github.com/mmin18/RealtimeBlurView)  
+- 视频播放 [https://github.com/CarGuo/GSYVideoPlayer](https://github.com/CarGuo/GSYVideoPlayer)  
+- 流式布局 [https://github.com/google/flexbox-layout](https://github.com/google/flexbox-layout)  
+- multidex [https://github.com/casidiablo/multidex](https://github.com/casidiablo/multidex)  
+- rx家族，retrofit，地址就不贴了 
 
 # 关于我
 - Email: songdongliang111@gmail.com
