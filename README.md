@@ -6,8 +6,8 @@
    - 接口参考[https://github.com/jokermonn/-Api/blob/master/Eyepetizer.md](https://github.com/jokermonn/-Api/blob/master/Eyepetizer.md)
 
 # 项目截图
-![home](screenshot/home.png) ![discovery](screenshot/discovery.png)
-![hot](screenshot/hot.png) ![profile](screenshot/profile.png) 
+![home](screenshot/home.png)&nbsp;&nbsp;&nbsp;&nbsp;![discovery](screenshot/discovery.png)
+![hot](screenshot/hot.png)&nbsp;&nbsp;&nbsp;&nbsp;![profile](screenshot/profile.png) 
 
 # 更新日志
 **v1.0.0**
