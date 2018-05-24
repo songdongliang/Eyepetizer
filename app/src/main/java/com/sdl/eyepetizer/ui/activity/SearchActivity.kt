@@ -12,6 +12,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import com.google.android.flexbox.*
+import com.sdl.eyepetizer.EyepetizerApplication
 import com.sdl.eyepetizer.R
 import com.sdl.eyepetizer.adapter.CategoryDetailAdapter
 import com.sdl.eyepetizer.adapter.HotKeywordsAdapter
@@ -45,7 +46,7 @@ class SearchActivity : BaseActivity(),SearchLoad {
 
     init {
         mPresenter.attachLoad(this)
-        mTextTypeface = Typeface.createFromAsset(assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
+        mTextTypeface = Typeface.createFromAsset(EyepetizerApplication.context.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
     }
 
     override fun setHotWordData(string: ArrayList<String>) {
@@ -127,6 +128,7 @@ class SearchActivity : BaseActivity(),SearchLoad {
     }
 
     override fun initData() {
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setUpEnterAnimation()
             setUpExitAnimation()

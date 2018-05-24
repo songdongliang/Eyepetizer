@@ -37,4 +37,5 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp25">25dp</dimen>
     <dimen name="dp32">32dp</dimen>
+    <dimen name="dp150">150dp</dimen>
 </resources>
