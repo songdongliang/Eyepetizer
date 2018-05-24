@@ -36,8 +36,7 @@ class StatusBarUtil {
                     val method = clazz.getMethod("get",String::class.java)
                     var versionName = method.invoke(null,"ro.miui.ui.version.name") as String
                     versionName = versionName.replace("[vV]".toRegex(),"")
-                    val version = Integer.parseInt(versionName)
-                    b = version > 6
+                    b = if (versionName.isNullOrEmpty()) false else Integer.parseInt(versionName) > 6
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

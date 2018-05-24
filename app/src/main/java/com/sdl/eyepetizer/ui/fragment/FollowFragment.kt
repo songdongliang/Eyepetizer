@@ -40,6 +40,7 @@ class FollowFragment: BaseFragment(),FollowLoad {
     }
 
     override fun initView() {
+        mPresenter.attachLoad(this)
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = mFollowAdapter
 

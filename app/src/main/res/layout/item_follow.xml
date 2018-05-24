@@ -18,7 +18,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/layout_item"
@@ -60,6 +60,10 @@
                 android:layout_marginEnd="@dimen/dp16"
                 android:textSize="@dimen/sp12"
                 android:text="@string/video_attention"
+                android:paddingStart="@dimen/dp5"
+                android:paddingEnd="@dimen/dp5"
+                android:paddingTop="@dimen/dp5"
+                android:paddingBottom="@dimen/dp5"
                 android:background="@drawable/btn_radius_black_border_bg"/>
         </RelativeLayout>
 

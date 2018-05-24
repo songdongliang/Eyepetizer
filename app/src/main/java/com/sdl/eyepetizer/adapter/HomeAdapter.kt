@@ -159,7 +159,7 @@ class HomeAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>> {
         tagText += timeFormat
 
         itemHomeContentBinding.textTag.text = tagText
-
+        itemHomeContentBinding.title = itemData.title
         itemHomeContentBinding.tvCategory.text = itemData.category
 
         itemHomeContentBinding.root.setOnClickListener {

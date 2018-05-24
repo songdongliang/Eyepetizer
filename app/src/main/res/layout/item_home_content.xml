@@ -8,6 +8,9 @@
         <variable
             name="cover"
             type="String"/>
+        <variable
+            name="title"
+            type="String"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -46,9 +49,11 @@
                 android:layout_toEndOf="@id/image_avatar"
                 android:layout_toStartOf="@+id/tv_category">
                 <TextView
+                    android:id="@+id/text_title"
                     style="@style/Text.Normal.Black"
                     android:maxLines="1"
-                    tools:text="life不止眼前的过去，and诗和远方"/>
+                    tools:text="life不止眼前的过去，and诗和远方"
+                    android:text="@{title}"/>
                 <TextView
                     android:id="@+id/text_tag"
                     style="@style/Text.SmallMore"

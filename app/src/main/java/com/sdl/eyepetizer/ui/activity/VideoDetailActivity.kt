@@ -148,7 +148,7 @@ class VideoDetailActivity : BaseActivity(),VideoDetailLoad {
         //保存之前要先查询sp中是否有该value的纪录，有则删除，这样保证搜索历史记录不会有重复条目
         val historyMap = WatchHistoryUtil.getAll(Constants.FILE_WATCH_HISTORY_NAME,this)
         for ((key,value) in historyMap) {
-            if (item == WatchHistoryUtil.getObject(Constants.FILE_WATCH_HISTORY_NAME,this,key)) {
+            if (item.data.playUrl == (WatchHistoryUtil.readStrToObject(value as String) as? HomeBean.Issue.Item)?.data?.playUrl) {
                 WatchHistoryUtil.remove(Constants.FILE_WATCH_HISTORY_NAME,this,key)
             }
         }

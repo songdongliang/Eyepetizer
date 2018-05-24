@@ -127,12 +127,16 @@ class WatchHistoryUtil {
 
         fun getObject(fileName: String,context: Context,key: String): Any? {
             val sp = context.getSharedPreferences(fileName,Context.MODE_PRIVATE)
+            val wordBase64 = sp.getString(key,"")
+            return readStrToObject(wordBase64)
+        }
+
+        fun readStrToObject(value: String): Any? {
             try {
-                val wordBase64 = sp.getString(key,"")
-                if (wordBase64.isNullOrEmpty()) {
+                if (value.isNullOrEmpty()) {
                     return null
                 }
-                val objBytes = Base64.decode(wordBase64.toByteArray(),Base64.DEFAULT)
+                val objBytes = Base64.decode(value.toByteArray(),Base64.DEFAULT)
                 val bis = ByteArrayInputStream(objBytes)
                 val ois = ObjectInputStream(bis)
                 //将byte数组转换成product对象

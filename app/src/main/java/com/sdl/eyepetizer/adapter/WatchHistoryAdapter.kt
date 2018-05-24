@@ -21,10 +21,12 @@ import com.sdl.eyepetizer.ui.activity.VideoDetailActivity
 
 class WatchHistoryAdapter: RecyclerView.Adapter<BindingViewHolder<ItemVideoSmallCardBinding>> {
 
+    private val mContext: Context
     private val mInflater: LayoutInflater
     private var itemList: ArrayList<HomeBean.Issue.Item>
 
     constructor(context: Context,itemList: ArrayList<HomeBean.Issue.Item>) : super() {
+        mContext = context
         mInflater = LayoutInflater.from(context)
         this.itemList = itemList
     }
@@ -49,7 +51,7 @@ class WatchHistoryAdapter: RecyclerView.Adapter<BindingViewHolder<ItemVideoSmall
             it!!.setTextColor(ContextCompat.getColor(it.context,android.R.color.black))
         }
         binding?.root?.setOnClickListener {
-            goToVideoPlayer(binding.root as Activity,binding.imageVideoSmallCard,item)
+            goToVideoPlayer(mContext as Activity,binding.imageVideoSmallCard,item)
         }
     }
 
