@@ -30,7 +30,7 @@ fun durationFormat(duration: Long): String {
         if (second <= 9) {
             "$minute' 0$second''"
         } else {
-            "$minute' $second"
+            "$minute' $second''"
         }
     }
 }

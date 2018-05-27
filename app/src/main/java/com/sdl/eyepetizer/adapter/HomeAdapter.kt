@@ -41,9 +41,9 @@ class HomeAdapter: RecyclerView.Adapter<BindingViewHolder<ViewDataBinding>> {
     private var mContext: Context
 
     companion object {
-        private val ITEM_TYPE_BANNER = 1 //Banner类型
-        private val ITEM_TYPE_TEXT_HEADER = 2 //textHeader
-        private val ITEM_TYPE_CONTENT = 3 //item
+        private const val ITEM_TYPE_BANNER = 1 //Banner类型
+        private const val ITEM_TYPE_TEXT_HEADER = 2 //textHeader
+        private const val ITEM_TYPE_CONTENT = 3 //item
     }
 
     constructor(context: Context,items: ArrayList<HomeBean.Issue.Item>) : super() {
